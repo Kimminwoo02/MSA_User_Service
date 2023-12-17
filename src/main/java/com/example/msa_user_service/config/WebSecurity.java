@@ -35,7 +35,10 @@ public class WebSecurity {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth->auth
-                        .requestMatchers(new MvcRequestMatcher(introspect,"/users/**")).permitAll())
+                        .requestMatchers(new MvcRequestMatcher(introspect,"/users/**")).permitAll()
+                        .requestMatchers(new MvcRequestMatcher(introspect,"/actuator/**")).permitAll()
+
+                )
 //                .requestMatchers(new MvcRequestMatcher(introspect,"/**")))
 //                .addFilter(getAuthenticationFilter())
 //                .addFilterAfter(getAuthenticationFilter())
